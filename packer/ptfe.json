@@ -1,0 +1,51 @@
+{
+"variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "ssh_private_key_file": "/Users/rachel/Downloads/rachel-key.pem"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-2",
+    "source_ami_filter": {
+      "filters": {
+      "virtualization-type": "hvm",
+      "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+      "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    },
+    "instance_type": "m5.large",
+    "ssh_username": "ubuntu",
+    "ssh_private_key_file" : "{{user `ssh_private_key_file`}}",
+    "ssh_keypair_name" : "rachel-key",
+    "ami_name": "packer-ptfe {{timestamp}}"
+  }],
+  "provisioners": [
+
+    {
+      "type": "shell",
+      "inline": [
+    "sudo apt-get update -y",
+    "sudo apt-get install -y golang-go git unzip",
+    "sudo curl https://install.terraform.io/ptfe/beta > /home/ubuntu/install.sh"
+  ],
+    "pause_before": "30s"
+  },
+  {
+    "type": "file",
+    "source": "/Users/rachel/Downloads/ptfe-preflight-0.1-alpha.3-linux_amd64.zip",
+    "destination": "/home/ubuntu/"
+  },
+  {
+    "type": "shell",
+  "inline": [
+    "sudo unzip ptfe-preflight-0.1-alpha.3-linux_amd64.zip"
+  ]
+  }
+
+]
+}

@@ -1,0 +1,7 @@
+aws_region = "us-east-2"
+namespace = "<namespace>"
+aws_instance_type = "m5.large"
+public_key = "ssh-rsa AAAAB3NzaC1yc...rachel@hashicorp.com"
+owner = "<owner>"
+ttl = "-1"
+ssh_key_name = "<keyname>"

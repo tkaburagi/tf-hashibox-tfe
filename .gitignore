@@ -1,4 +1,10 @@
-/.terraform/
-/.idea/
-terraform.tfstate
-terraform.tfstate.backup
+
+.DS_Store
+examples/aws/.terraform/modules/5199adeade6fb4a6ea7b54a344d79e2e
+examples/aws/.terraform/modules/cbdf9b2a00a33a8a48976f760c11d947
+examples/aws/.terraform/modules/modules.json
+examples/aws/.terraform/plugins/darwin_amd64/lock.json
+examples/aws/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.8.0_x4
+examples/aws/.terraform/plugins/darwin_amd64/terraform-provider-random_v2.1.1_x4
+examples/aws/.terraform/plugins/darwin_amd64/terraform-provider-template_v2.1.1_x4
+examples/aws/terraform.tfstate
